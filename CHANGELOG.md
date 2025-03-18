@@ -2,6 +2,125 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.74.2](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/compare/v0.75.0...v0.74.2) (2025-03-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* Updated the minimum required Home Assistant version to 2024.3.0 in the README to ensure compatibility with the label and floor registries introduced in this version. This update should have been made with the release of version 0.66.0.
+* Dropping support for node v16
+* Entity IDs incorrectly placed in `targets.entity_id` instead of `data.entity_id` will now trigger errors.
+* **wait-until:** If a wait-until node times out and the entity selector has multiple entities, the output property 'entity' will have an undefined value.
+* **device:** Fix device action to send entity to HA
+* **action:** The call-service node has been renamed to the action node. The domain and service input properties are deprecated and will be removed in version 1.0. Please use the action property instead.
+* **fire-event:** Mustache templates or JSONata expression being passed into the fire-event node will no longer be rendered
+
+### Features
+
+* **action:** Add filters to ID selectors ([8d34e43](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/8d34e43aba5501119df1c6e6f173d7c95e3e9a99))
+* **action:** Add option to block input overrides in action nodes ([8dd947f](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/8dd947f140aa21cbd545d5064bcdd38698c85d11)), closes [#1489](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1489)
+* **action:** Add selector for floor and label ([20e08ab](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/20e08aba4fd34ff58f7d75feb9df241ac8a6cccf))
+* Add support for floors and labels ([36c2c9d](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/36c2c9d66ec5bfd8e5e588f5bd97b7a0fd288670))
+* **api:** Add DELETE and PUT methods to the API node ([7bba5af](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/7bba5af90238001e3120117d54ac0fab5fdfb1b6)), closes [#1435](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1435)
+* **calendar:** Implement Calendar Event Trigger Node ([f5a183c](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/f5a183c77fe23ef24820763f48aaf41a8706fce5))
+* **events-state:** Update event state listener to allow listening to multiple types ([57a8ab7](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/57a8ab7845fb28d0ff082ebf67818130551ea27a))
+* **get-entities:** Add device/area/floor/label conditions ([b194eb0](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/b194eb0a1695bdb1390fc10fe684204b5ecaf311))
+* **issues:** Implement issue detection for Home Assistant nodes ([61eb103](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/61eb103f205e26604e0148d230971dffca55ce7e))
+* **issues:** Validate entity_id placement within the correct property for the action node ([eef3717](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/eef371778ca6da9ee569181087f90328bec64533))
+* **number:** Add "Expose as" option for Listening mode in number node ([e7441e1](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/e7441e1b339193426ef2b1abdc498a42951cef11))
+* **number:** Promote number node from beta to stable ([f235081](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/f235081b9ca7f22401bd0bbba0e837b7422efa27))
+* **select:** Add "Expose as" option for Listening mode in select node ([8dfffb3](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/8dfffb3a2ca475c68539ea2d92786f0b529c3685))
+* **select:** Promote select node from beta to stable ([f235081](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/f235081b9ca7f22401bd0bbba0e837b7422efa27))
+* **sensor:** add new device classes and units of measurement for area, blood glucose concentration, conductivity, potential hydrogen, and volume flow rate ([0e621aa](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/0e621aac6135252f6ff5ef59b3c05defb97b59a4)), closes [#1710](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1710)
+* **sentence:** Add device id to output properties ([8f1ccd9](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/8f1ccd9c6c9157a1a9c3537703763c2e3c8e1dd4))
+* **sentence:** Add support for custom responses in the sentence node ([bdfcd95](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/bdfcd95574982168f315b3e6152f6d578582fda7))
+* slovak translation ([623d75b](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/623d75bbb0a964050feabcc980b316a318716b8a))
+* **text:** Add "Expose as" option for Listening mode in text node ([60d69d2](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/60d69d2a4ad262b47b921e67db273fdbd89d6b0f))
+* **text:** Promote text node from beta to stable ([f235081](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/f235081b9ca7f22401bd0bbba0e837b7422efa27))
+* **time-entity:** Add "Expose as" option for Listening mode in time-entity node ([7ae8c09](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/7ae8c0950f6a9a40aa0a5ee65fc897700db52334))
+* **time-entity:** Promote time-entity node from beta to stable ([f235081](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/f235081b9ca7f22401bd0bbba0e837b7422efa27))
+* **time:** Added option to allow past date inputs without throwing errors ([a1e16ee](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/a1e16ee6f16bb4701165477be2b649ce27eb4620)), closes [#1575](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1575)
+* **trigger-state:** Update listener to allow listening to multiple types at once ([a14a7f3](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/a14a7f338ad18d709cdb9d5dfd88ae22a628e043))
+* **wait-until:** Update wait-until listener to allow listening to multiple types ([d24b604](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/d24b6043a254b5fea208130aa10e787cb15563f9)), closes [#919](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/919)
+
+
+### Bug Fixes
+
+* **action:** correctly apply bitmask for supported features ([e4d4e97](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/e4d4e979747d0ceaec29b0f5067ef33ef0f8719c))
+* **action:** ensure data field is not merged when input block is enabled ([ef6e47b](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/ef6e47b261911e9c9afa78d68f0305c68f12d933)), closes [#1641](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1641)
+* **action:** Ensure label displays only once ([37c143d](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/37c143d5c1e001e00792d4f2fcf459a304192251))
+* **action:** Fix sent data to output sent data and not the data field only ([30b15a7](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/30b15a7a22ae69a7df6c2db8d71b3d74ded24354))
+* **action:** Fix target labels to include device/area labels ([23f0c72](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/23f0c7205045a7a15ac7bf21a74f050fd3731c70))
+* **action:** preserve domain and service while addressing deprecated notice ([613e505](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/613e505efae0ed750662cf4ee32972051f19ad5d)), closes [#1622](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1622)
+* **action:** remove unnecessary toLowerCase conversion for action value ([64a200e](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/64a200e946ce9563d811a031940cd9276c860fc4)), closes [#1697](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1697)
+* Add a version file for diagnostics ([ad9f694](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/ad9f6942dc0da52e6e0a7fc50a17a967b8a64792))
+* Add event listeners for entity type selection for NR 4.0 ([9ea63cf](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/9ea63cf36e0031fffba5d4b07d4e77c75ff9b896))
+* Add null check for new_state in TriggerStateController and ZoneController ([5258e4a](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/5258e4a76f7a6a11e79c6742c3ead32656017c38))
+* **api:** Await websocket send in ApiController ([3319bf4](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/3319bf4c1cb517c0da8779e093c0c64b9c4cd1ba))
+* **call-service:** Allow call service to work prior to HA 2023.12 ([92c7a3f](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/92c7a3f723faa2138de03d914f3b16f42921a210))
+* **call-service:** Allow the call-service input to accept strings in target properties ([f86e2c6](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/f86e2c67b96379165809254cc49a0fae916fbb88)), closes [#1247](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1247)
+* **call-service:** Don't throw error if mergeContext is undefined ([7388c45](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/7388c45f8698fda1fb65fd96363076d5352ec751))
+* **call-service:** Fix merge context merge order ([e2f2ac8](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/e2f2ac80112d1d38c65d74b7cc0e8d6554e46d65))
+* **call-service:** Merge target data into service data before sending to HA ([60f55f2](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/60f55f24844d2c617323232b04be8084dbfd0943)), closes [#1248](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1248) [#1245](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1245)
+* **comms:** update stateChanged handling to use HassEntity and prevent null entries ([fc62241](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/fc6224150918e8241642d6c8bfc92a7be42cc328))
+* **device:** Fix device action to send entity to HA ([48cfa54](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/48cfa545ca34e1d6afe9c21992f2c8fab76b1eb7))
+* **device:** Fix device node losing trigger id ([48cfa54](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/48cfa545ca34e1d6afe9c21992f2c8fab76b1eb7))
+* **device:** Fix translations not loading ([48cfa54](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/48cfa545ca34e1d6afe9c21992f2c8fab76b1eb7))
+* **diagnostics:** correctly fetch and display addon version ([c26c7ee](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/c26c7eed945fa60b1f5b6b598315fd04a4e3476c))
+* ensure comms throttle works as intended ([4065746](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/40657466feef85588bfbd531ebcb3da789bebb82))
+* **fire-event:** Handle errors when sending events via websocket ([38167fc](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/38167fcf7cd4410ba51c5cb7ac452d848e18f02b))
+* **fire-event:** Only render templates/expressions when not from message input ([16e8e22](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/16e8e225e2fb1431bff899b0210fe0644e3e272a))
+* Fix diagnostics fetch to use relative url ([127e4f8](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/127e4f890f00f15a081a1fc99be814c64c352c04))
+* Fix diagnostics info to not show undefined for addon version ([1fda39f](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/1fda39f6469bfa6c4023dbf72a3801f4b8b2a3aa))
+* Fix ID selector to include state only entities ([8057dd7](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/8057dd7f9a0f3c544b190607d27da45a1a59dd73))
+* Fix TS types ([b805cf8](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/b805cf881a60e41729afeea9e7d5b356c3c5a2d0))
+* **get-entities:** Add timeSinceChangedMs to the states before condition checks ([5036246](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/50362467ee935eaffa15ea60116ede95b4ed854d))
+* **get-entities:** Default to state_object for conditions ([b9631a2](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/b9631a22ea26b228a669c280bb49858136ebe0bb)), closes [#1478](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1478)
+* **get-entities:** Iterate over 'states' table to retrieve all entities ([64a1d02](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/64a1d02e6cee6372fda904e9679aa219a95920a4)), closes [#1481](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1481)
+* **get-entities:** Set condition value type when editor is opened ([1661310](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/1661310daa329eafc0bc1690029114f56776ca23)), closes [#1507](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1507)
+* **get-entities:** simplify label checks and improve entity label matching logic ([da3c15a](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/da3c15a49a9fb30cd54ba701d5a23b36242d3a83)), closes [#1686](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1686)
+* **get-history:** Fix input validation so relativeTime can be empty ([05e519f](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/05e519f8475bf1fafb0581eb3133ae88fbe57c01)), closes [#1239](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1239)
+* **integration:** Handle errors when sending and unregistering entities ([cb72c3f](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/cb72c3f8e4fd2c8eef29836e8cd4a95577f94417))
+* **issues:** Fix possible memory leak from event listeners ([929a309](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/929a309b2e38825443c554cb0c93361d6f54279d))
+* **issues:** gracefully skip unparseable data ([f6e192d](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/f6e192d5ef9466856a9ed68336a154b3b4e44c22))
+* **issues:** Ignore all disabled nodes ([526504a](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/526504ab538a80e2fa366df0f6f6f4eabc15764f))
+* **issues:** Ignore nodes when in a disabled tab ([85589ba](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/85589ba81c0d28572aa13e98eadc400ff75a5845))
+* **issues:** Target "all" for an entity id valid ([3e31f65](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/3e31f65ee35794e62a0ecf53abef7a8d3c3efdd4))
+* **issues:** Wait until HA is in running state to check issues ([fdda4fd](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/fdda4fd7916dcf44a45d61acd91e577e72922d0b))
+* Move entity_id from target field to data field ([1ae771d](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/1ae771d2551b008dea9c201e257d63f6fe91d9f2))
+* **sensor:** Fix options mapping in sensor node ([15f2920](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/15f292076131dd215d7173cd5644b111f6d802e6))
+* **sidebar:** Use correct editor type for config node ([007627f](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/007627fd2e9daf5dadc6a4dd9e6f2037fe70b97f)), closes [#1237](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1237)
+* **socialbar:** replace Discord button link with permanent invite code ([a1a4016](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/a1a40166606ca75bedf12a3817ebb945c62bd642))
+* **socialbar:** update Discord button link to new URL ([3adc8c5](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/3adc8c5381c48837f7556d6361bfca20994149f9))
+* Throw error if HA version doesn't meet requirement ([6d84f0c](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/6d84f0c2a4b039d22b3d836313a1d975453bcd5a))
+* **time:** Fix breaking changes from cron package ([5cf6d5b](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/5cf6d5b4f2e8f06cccb8ebde8acceb7ccee1382e))
+* **time:** Improve handling of  cronjobs creation ([680227a](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/680227aa4a7d96ea3b8ecacafc9e0aa128ed6e33)), closes [#1490](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1490)
+* **time:** Resolve "Date in past. Will never be fired." error for valid dates ([a1e16ee](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/a1e16ee6f16bb4701165477be2b649ce27eb4620))
+* **trigger-state:** Use post migrated config for event triggers ([b841734](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/b841734d70951414393f45fd8da035fcd4b5e0ee))
+* update node type check in issueCheck function to GetHistory ([1c80b72](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/1c80b72478ffa4c3e7e65b3be7bcb277a9fbad4b))
+* Update virtual-select.ts to handle null attributes in createSelectOptions function ([557271c](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/557271ca46109fb7d4b05b5e64545efe22a0171f))
+* Use the correct package.json file for node version ([11abb05](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/11abb0507e1c99c2a6678f2aaa83b45de67318e1))
+* **wait-until:** Add null check for new_state in WaitUntilController ([b526b00](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/b526b007fe713c0fa66b91a70ea48996bc54e337))
+* **wait-until:** Handle undefined entity in timeSinceChangedMs calculation ([0512e1f](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/0512e1ff0eb25dd435aedb45b2391046f53e62d5)), closes [#1519](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1519)
+
+
+### Reverts
+
+* "fix(call-service): Merge target data into service data before sending to HA" ([5960d09](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/5960d0991754fb2a6977308fd04eaefbdbfc099b))
+
+
+### Documentation
+
+* update Home Assistant version requirement to v2024.3 ([9b8ac19](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/9b8ac19687179ba2959ef97e656b322c79028132)), closes [#1707](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/issues/1707)
+* Update node version to 18 ([f0c5f3d](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/f0c5f3d34b0f62f125f78450d57dd520bbafb810))
+
+
+### Miscellaneous Chores
+
+* release 0.62.0 ([d92d2d6](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/d92d2d67006287f2ee3cfc60552793d69d2ed3b2))
+* release 0.62.1 ([9f50a91](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/9f50a91fac04e713955accb9a1144178c16e766d))
+* release 0.74.2 ([cb4eb60](https://github.com/badboyguo/node-red-contrib-home-assistant-websocket/commit/cb4eb6020bf412e7130fa49cb74d1b48b273f8a5))
+
 ## [0.75.0](https://github.com/zachowj/node-red-contrib-home-assistant-websocket/compare/v0.74.2...v0.75.0) (2024-12-31)
 
 
